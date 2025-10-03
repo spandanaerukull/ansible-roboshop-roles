@@ -1,11 +1,7 @@
 - name: app setup
   include_role:
     name: common
-  task_from: app-setup
-
-
-
-
+    tasks_from: app-setup
 
 
 - name: copy mongodb repo
@@ -33,4 +29,4 @@
 - name: app setup
   include_role:
     name: common
-    task_from: systemd.yaml
+    tasks_from: systemd.yaml
