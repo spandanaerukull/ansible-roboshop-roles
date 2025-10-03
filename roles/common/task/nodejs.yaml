@@ -1,0 +1,24 @@
+
+
+- name: disable default nodejs  # here i usede command line because we don't have any module for dnf module disable
+  ansible.builtin.command: dnf module disable nodejs -y  
+# Enable Node.js 20 module
+- name: enable nodejs:20
+  ansible.builtin.command: dnf module enable nodejs:20 -y
+# here i am using dnf module to install nodejs package
+- name: install nodejs
+  ansible.builtin.dnf:
+    name: nodejs
+    state: present
+# here i am using user module to create roboshop user (ansible itself checks the user, no need to write the logic)
+# - name: create roboshop system user  
+#   ansible.builtin.user: # user module is used to create a user in ansible
+#     name: roboshop
+#     shell: /sbin/nologin  
+#     system: true # by giving true roboshop will become the system user
+#     home: /app  
+
+
+- name: install dependencies
+  community.general.npm: # npm module is not present in ansible by default we need to install it using "ansible-galaxy collection install community.general"
+    path: /app # path where package.json is present

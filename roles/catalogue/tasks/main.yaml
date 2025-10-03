@@ -1,0 +1,36 @@
+- name: app setup
+  include_role:
+    name: common
+  task_from: app-setup
+
+
+
+
+
+
+- name: copy mongodb repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: install mongodb client
+  ansible.builtin.dnf:
+    name: mongodb-mongosh
+    state: present
+
+- name: check products loaded or not
+  ansible.builtin.command: mongosh --host  54.226.109.186 --eval 'db.getMongo().getDBNames().indexOf("catalogue")' # to check the catalogue database is present or not
+  register: catalogue_output # command is used for to see the output of the command
+
+- name: print catalogue output
+  ansible.builtin.debug:
+    msg: "{{ catalogue_output }}"
+
+- name: load products
+  ansible.builtin.shell: mongosh --host 54.226.109.186 < /app/db/master-data.js # here i used shell module because it supports redirection operators like <, >, >>, | etc
+  when: catalogue_output.stdout | int < 0 # when the output is less than 0 then only load the products data
+
+- name: app setup
+  include_role:
+    name: common
+    task_from: systemd.yaml
