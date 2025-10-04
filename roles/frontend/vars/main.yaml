@@ -1,0 +1,5 @@
+CATALOGUE_HOST: catalogue. my host name
+USER_HOST: user.my host name
+CART_HOST: cart.my host name
+SHIPPING_HOST: shipping.my host name
+PAYMENT_HOST: payment.my host name 
