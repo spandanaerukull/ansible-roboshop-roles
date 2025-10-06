@@ -1,0 +1,2 @@
+REDIS_HOST: redis.myhostname.site
+MONGODB_HOST: mongodb.myhostname.site 
