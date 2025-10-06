@@ -3,3 +3,8 @@
   hosts: "{{ component }}"
   roles: # this will automatically load a folder called roles in current working directory
   - "{{ component }}"
+
+
+
+  # this main.yaml file is used for common use , we can give component in commandline
+   # exp: ansible-playbook -i inventory.ini -e component=mgngodb main.yaml 

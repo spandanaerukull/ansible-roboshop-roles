@@ -2,7 +2,7 @@
 
 
 - name: copy catalogue service to system directory # here i am using copy module to copy the catalogue.service file from ansible control node to ansible managed node
-  ansible.builtin.template:
+  ansible.builtin.template: # we should keep templeat 
     src: catalogue.service.j2 # here i am copying the catalogue.service file from ansible control node
     dest: /etc/systemd/system/catalogue.service # here i am copying the catalogue.service file from ansible control node to ansible managed node
 

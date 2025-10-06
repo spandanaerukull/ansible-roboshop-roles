@@ -21,7 +21,7 @@
 
 - name: check products loaded or not
   ansible.builtin.command: mongosh --host  54.226.109.186 --eval 'db.getMongo().getDBNames().indexOf("catalogue")' # to check the catalogue database is present or not
-  register: catalogue_output # command is used for to see the output of the command
+  register: catalogue_output # command is used for to see the output of the task
 
 - name: print catalogue output
   ansible.builtin.debug:

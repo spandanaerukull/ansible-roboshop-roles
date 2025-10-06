@@ -1,5 +1,5 @@
 # Ansible roles #
-ansible roles is a dry principle we can reuse it multiple time 
+ansible roles is a proper directory structure to write ansible playbooks, we can reuse roles.
 
 # What is an Ansible Role? #
 
